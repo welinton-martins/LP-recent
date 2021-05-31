@@ -28,22 +28,28 @@ public class Imovel {
 			}
 		}	
 	}
-	public void ImportarImoveis() {
+    
+	public static void ImportarImoveis() {
 	
 	}
-	public void ExportarImoveis() {
+
+	public static void ExportarImoveis() {
 	
-	}	
-	public void MostrarDetalheDoImovel() {
+	}
+
+	public static void MostrarDetalheDoImovel() {
 
 	}
-	public void InserirNovoImovel() {
+
+	public static void InserirNovoImovel() {
 		
 	}
-	public void RemoverImovel() {
+
+	public static void RemoverImovel() {
 		
-	}	
-	public void Sair() {
+	}
+
+	public static void Sair() {
 		
 	}
 }
