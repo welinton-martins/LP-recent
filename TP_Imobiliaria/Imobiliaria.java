@@ -7,6 +7,14 @@ public class Imovel {
 	
 	public static void main(String[] args) {
 		var op = 0;
+        try {
+
+        } catch (Exception e) {
+
+        }
+        finally {
+
+        }
 		while (true) {
 			switch (op) {
 				case 1:
