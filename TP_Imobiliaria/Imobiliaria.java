@@ -1,3 +1,8 @@
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.Scanner;
+
 public class Imovel {
 	private int referencia;
 	private String tipo;
@@ -6,34 +11,38 @@ public class Imovel {
 	private float valor;
 	
 	public static void main(String[] args) {
-		var op = 0;
+        if (args.lenght == 0) {
+            System.out.println("Uso incorreto!");
+            System.exit(1);
+        }
+        Scanner in = new Scanner(System.in);
+		//var op = 0;
         try {
-
-        } catch (Exception e) {
-
+            FileWritter fw = new FileWriter(args[0]);
+            BufferedWriter bw = new BufferedWriter(fw);
+        } catch (IOException e) {
+            System.out.println("Erro de leitura/escrita");
         }
-        finally {
+        in.close();
+		// while (true) {
+		// 	switch (op) {
+		// 		case 1:
+		// 			break;
+		// 		case 2: 
+		// 			break;
+		// 		case 3:
+		// 			break;
+		// 		case 4:
+		// 			break;
+		// 		case 5:
+		// 			break;
+		// 		case 6:
+		// 			break;
+		// 		case 7:
+		// 			break;
 
-        }
-		while (true) {
-			switch (op) {
-				case 1:
-					break;
-				case 2: 
-					break;
-				case 3:
-					break;
-				case 4:
-					break;
-				case 5:
-					break;
-				case 6:
-					break;
-				case 7:
-					break;
-
-			System.out.print("Informe uma opcao: ");
-			}
+		// 	System.out.print("Informe uma opcao: ");
+		// 	}
 		}	
 	}
     
