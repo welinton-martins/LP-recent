@@ -11,62 +11,71 @@ public class Imovel {
 	private float valor;
 	
 	public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+		int op = 0;
+        
         if (args.lenght == 0) {
             System.out.println("Uso incorreto!");
             System.exit(1);
         }
-        Scanner in = new Scanner(System.in);
-		//var op = 0;
+        
         try {
             FileWritter fw = new FileWriter(args[0]);
             BufferedWriter bw = new BufferedWriter(fw);
+            do {
+			    System.out.println("Imobiliária");
+                System.out.println("<1> Importar imóveis");
+                System.out.println("<2> Exportar imóveis");
+                System.out.println("<3> Listar imóveis");
+                System.out.println("<4> Mostrar detalhe do imóvel");
+                System.out.println("<5> Inserir novo imóvel");
+                System.out.println("<6> Remover imóvel");
+                System.out.println("<0> Sair");
+                op = in.nextInt();
+                switch (op) {
+				case 1: ImportarImoveis();
+					break;
+				case 2: ExportarImoveis();
+					break;
+				case 3: ListarImoveis();
+					break;
+				case 4: MostrarDetalheDoImovel();
+					break;
+				case 5: InserirNovoImovel();
+					break;
+				case 6: RemoverImovel();
+					break;
+				case 0: break; 
+                default: System.out.println("Opção inválida!");
+        } while (op != 0);
+
+        // instancianado o objeto imovel
+        //Imovel i = new Imovel();
         } catch (IOException e) {
             System.out.println("Erro de leitura/escrita");
         }
+        
+		
         in.close();
-		// while (true) {
-		// 	switch (op) {
-		// 		case 1:
-		// 			break;
-		// 		case 2: 
-		// 			break;
-		// 		case 3:
-		// 			break;
-		// 		case 4:
-		// 			break;
-		// 		case 5:
-		// 			break;
-		// 		case 6:
-		// 			break;
-		// 		case 7:
-		// 			break;
-
-		// 	System.out.print("Informe uma opcao: ");
-		// 	}
 		}	
 	}
-    
 	public static void ImportarImoveis() {
+        
+	}
+
+	// public static void ExportarImoveis() {
 	
-	}
+	// }
 
-	public static void ExportarImoveis() {
-	
-	}
+	// public static void MostrarDetalheDoImovel() {
 
-	public static void MostrarDetalheDoImovel() {
+	// }
 
-	}
-
-	public static void InserirNovoImovel() {
+	// public static void InserirNovoImovel() {
 		
-	}
+	// }
 
-	public static void RemoverImovel() {
+	// public static void RemoverImovel() {
 		
-	}
-
-	public static void Sair() {
-		
-	}
+	// }
 }
