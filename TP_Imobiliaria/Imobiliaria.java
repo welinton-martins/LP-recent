@@ -1,9 +1,10 @@
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.Serializable;
 import java.util.Scanner;
 
-public class Imovel {
+public class Imovel implements Serializable {
 	private int referencia;
 	private String tipo;
 	private int quartos;
@@ -59,23 +60,27 @@ public class Imovel {
         in.close();
 		}	
 	}
-	public static void ImportarImoveis() {
-        
+	private static void ImportarImoveis() {
+        try {
+            O
+        } catch (Exception e) {
+            //TODO: handle exception
+        }
 	}
 
-	// public static void ExportarImoveis() {
+	// private static void ExportarImoveis() {
 	
 	// }
 
-	// public static void MostrarDetalheDoImovel() {
+	// private static void MostrarDetalheDoImovel() {
 
 	// }
 
-	// public static void InserirNovoImovel() {
+	// private static void InserirNovoImovel() {
 		
 	// }
 
-	// public static void RemoverImovel() {
+	// private static void RemoverImovel() {
 		
 	// }
 }
