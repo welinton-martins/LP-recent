@@ -1,6 +1,9 @@
-import java.io.BufferedWriter;
-import java.io.FileWriter;
+//import java.io.BufferedWriter;
+//import java.io.FileWriter;
+import java.io.EOFException;
 import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.Scanner;
 
@@ -15,14 +18,14 @@ public class Imovel implements Serializable {
         Scanner in = new Scanner(System.in);
 		int op = 0;
         
-        if (args.lenght == 0) {
-            System.out.println("Uso incorreto!");
-            System.exit(1);
-        }
+        // if (args.lenght == 0) {
+        //     System.out.println("Uso incorreto!");
+        //     System.exit(1);
+        // }
         
         try {
-            FileWritter fw = new FileWriter(args[0]);
-            BufferedWriter bw = new BufferedWriter(fw);
+            // FileWritter fw = new FileWriter(args[0]);
+            // BufferedWriter bw = new BufferedWriter(fw);
             do {
 			    System.out.println("Imobiliária");
                 System.out.println("<1> Importar imóveis");
@@ -60,17 +63,26 @@ public class Imovel implements Serializable {
         in.close();
 		}	
 	}
-	private static void ImportarImoveis() {
-        try {
-            O
-        } catch (Exception e) {
-            //TODO: handle exception
-        }
-	}
+	// private static void ImportarImoveis() {
+    //     try {
+    //         O
+    //     } catch (Exception e) {
+    //         //TODO: handle exception
+    //     }
+	// }
 
 	// private static void ExportarImoveis() {
 	
 	// }
+
+    private static void ListarImoveis() {
+        // falta terminar
+        try {
+            ObjectOutputStream
+        } catch (IOException e) {
+            System.out.println("");
+        }
+    }
 
 	// private static void MostrarDetalheDoImovel() {
 
