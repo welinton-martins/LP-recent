@@ -1,3 +1,7 @@
+import java.io.File;
+import java.io.FileReader;
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
 import java.io.EOFException;
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -6,6 +10,7 @@ import java.io.Serializable;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 import java.util.NoSuchElementException;
 import java.util.Scanner;
 
@@ -29,6 +34,7 @@ public class Imovel implements Serializable {
                 System.out.println("<5> Inserir novo imóvel");
                 System.out.println("<6> Remover imóvel");
                 System.out.println("<0> Sair");
+                System.out.print("Opção: ");
                 op = in.nextInt();
                 switch (op) {
                     case 1: ImportarImoveis();
@@ -54,13 +60,24 @@ public class Imovel implements Serializable {
 	}
 	private static void ImportarImoveis() {
         Scanner in = new Scanner(System.in);
-        
-
+        System.out.print("Informe o nome do arquivo: ");
+        File arquivo = new File(in.next());
         try {
-            System.out.println("Insira o nome do Imovel:");
-            
-        } catch (Exception e) {
-            //TODO: handle exception
+            if(!arquivo.exists()) {
+                arquivo.createNewFile();
+            }
+            FileReader fr = new FileReader(arquivo);
+            BufferedReader br = new BufferedReader(fr);
+            while (br.ready()) {
+                int c = br.read();
+                System.out.printf("%c", c);
+            }
+            br.close();
+            fr.close();
+        } catch (FileNotFoundException e) {
+            System.out.println("Arquivo não encontrado!");
+        } catch (IOException e) {
+            System.out.println("Erro de leitura/escrita");
         }
 	}
 
@@ -69,11 +86,13 @@ public class Imovel implements Serializable {
 	}
 
     private static void ListarImoveis() {
+        ObjectInputStream input = null;
         try {
-            ObjectInputStream input = new ObjectInputStream(Files.newInputStream(Paths.get("imobiliaria.csv")));
+            input = new ObjectInputStream(Files.newInputStream(Paths.get("imovel.csv")));
             while (true) {
                 Imovel i = (Imovel) input.readObject();
                 System.out.printf("%d - %10.2f\n", i.referencia, i.valor);
+                return;
             }
         } catch (EOFException e) {
             System.out.println("Fim dos registros");
@@ -81,6 +100,14 @@ public class Imovel implements Serializable {
             System.out.println("Tipo de objeto inválido");
         } catch (IOException e) {
             System.out.println("Erro de leitura no arquivo");
+        } finally {
+            if (input != null) {
+                try {
+                    input.close();
+                } catch (IOException e) {
+                    System.out.println("Erro ao fechar o arquivo!");
+                }
+            }
         }
     }
 
