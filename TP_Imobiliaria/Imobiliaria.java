@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
+import java.util.NoSuchElementException;
 import java.util.Scanner;
 
 public class Imovel implements Serializable {
@@ -37,35 +38,37 @@ public class Imovel implements Serializable {
                 System.out.println("<0> Sair");
                 op = in.nextInt();
                 switch (op) {
-				case 1: ImportarImoveis();
-					break;
-				case 2: ExportarImoveis();
-					break;
-				case 3: ListarImoveis();
-					break;
-				case 4: MostrarDetalheDoImovel();
-					break;
-				case 5: InserirNovoImovel();
-					break;
-				case 6: RemoverImovel();
-					break;
-				case 0: break; 
-                default: System.out.println("Opção inválida!");
-        } while (op != 0);
+                    case 1: ImportarImoveis();
+                        break;
+                    case 2: ExportarImoveis();
+                        break;
+                    case 3: ListarImoveis();
+                        break;
+                    case 4: MostrarDetalheDoImovel();
+                        break;
+                    case 5: InserirNovoImovel();
+                        break;
+                    case 6: RemoverImovel();
+                        break;
+                    case 0: break; 
+                    default: System.out.println("Opção inválida!");
+                }
+            } while (op != 0);
 
-        // instancianado o objeto imovel
-        //Imovel i = new Imovel();
         } catch (IOException e) {
             System.out.println("Erro de leitura/escrita");
         }
-        
-		
+
         in.close();
 		}	
 	}
 	// private static void ImportarImoveis() {
+    //     Scanner in = new Scanner(System.in);
+        
+
     //     try {
-    //         O
+    //         System.out.println("Insira o nome do Imovel:");
+            
     //     } catch (Exception e) {
     //         //TODO: handle exception
     //     }
@@ -76,11 +79,18 @@ public class Imovel implements Serializable {
 	// }
 
     private static void ListarImoveis() {
-        // falta terminar
         try {
-            ObjectOutputStream
+            ObjectOutputStream input = new ObjectInputStream(Files.newInputStream(Paths.get("imobiliaria.csv")));
+            while (true) {
+                Imovel i = (Imovel) input.readObject();
+                System.out.printf("%d - %10.2f\n", i.referencia, i.valor);
+            }
+        } catch (EOFException e) {
+            System.out.println("Fim dos registros");
+        } catch (ClassNotFoundException e) {
+            System.out.println("Tipo de objeto inválido");
         } catch (IOException e) {
-            System.out.println("");
+            System.out.println("Erro de leitura no arquivo");
         }
     }
 
