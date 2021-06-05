@@ -47,7 +47,7 @@ public class Imovel implements Serializable {
                     default: System.out.println("Opção inválida!");
                 }
             } catch (NoSuchElementException e) {
-                e.
+                e.printStackTrace();
             }
         } while (op != 0);
         in.close();
