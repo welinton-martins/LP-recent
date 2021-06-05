@@ -1,10 +1,11 @@
-//import java.io.BufferedWriter;
-//import java.io.FileWriter;
 import java.io.EOFException;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.NoSuchElementException;
 import java.util.Scanner;
 
@@ -18,16 +19,8 @@ public class Imovel implements Serializable {
 	public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
 		int op = 0;
-        
-        // if (args.lenght == 0) {
-        //     System.out.println("Uso incorreto!");
-        //     System.exit(1);
-        // }
-        
-        try {
-            // FileWritter fw = new FileWriter(args[0]);
-            // BufferedWriter bw = new BufferedWriter(fw);
-            do {
+        do {
+            try {
 			    System.out.println("Imobiliária");
                 System.out.println("<1> Importar imóveis");
                 System.out.println("<2> Exportar imóveis");
@@ -53,34 +46,31 @@ public class Imovel implements Serializable {
                     case 0: break; 
                     default: System.out.println("Opção inválida!");
                 }
-            } while (op != 0);
-
-        } catch (IOException e) {
-            System.out.println("Erro de leitura/escrita");
-        }
-
+            } catch (NoSuchElementException e) {
+                e.
+            }
+        } while (op != 0);
         in.close();
-		}	
 	}
-	// private static void ImportarImoveis() {
-    //     Scanner in = new Scanner(System.in);
+	private static void ImportarImoveis() {
+        Scanner in = new Scanner(System.in);
         
 
-    //     try {
-    //         System.out.println("Insira o nome do Imovel:");
+        try {
+            System.out.println("Insira o nome do Imovel:");
             
-    //     } catch (Exception e) {
-    //         //TODO: handle exception
-    //     }
-	// }
+        } catch (Exception e) {
+            //TODO: handle exception
+        }
+	}
 
-	// private static void ExportarImoveis() {
+	private static void ExportarImoveis() {
 	
-	// }
+	}
 
     private static void ListarImoveis() {
         try {
-            ObjectOutputStream input = new ObjectInputStream(Files.newInputStream(Paths.get("imobiliaria.csv")));
+            ObjectInputStream input = new ObjectInputStream(Files.newInputStream(Paths.get("imobiliaria.csv")));
             while (true) {
                 Imovel i = (Imovel) input.readObject();
                 System.out.printf("%d - %10.2f\n", i.referencia, i.valor);
@@ -94,15 +84,15 @@ public class Imovel implements Serializable {
         }
     }
 
-	// private static void MostrarDetalheDoImovel() {
+	private static void MostrarDetalheDoImovel() {
 
-	// }
+	}
 
-	// private static void InserirNovoImovel() {
+	private static void InserirNovoImovel() {
 		
-	// }
+	}
 
-	// private static void RemoverImovel() {
+	private static void RemoverImovel() {
 		
-	// }
+	}
 }
