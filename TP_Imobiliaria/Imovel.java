@@ -59,6 +59,7 @@ public class Imovel implements Serializable {
         in.close();
 	}
 	private static void ImportarImoveis() {
+        Imovel i = new Imovel();
         Scanner in = new Scanner(System.in);
         System.out.print("Informe o nome do arquivo: ");
         File arquivo = new File(in.next());
@@ -68,8 +69,13 @@ public class Imovel implements Serializable {
             }
             FileReader fr = new FileReader(arquivo);
             BufferedReader br = new BufferedReader(fr);
+            
             while (br.ready()) {
-                int c = br.read();
+                int[] c = br.read();
+                int i = 0; 
+                i.referencia = c[0];
+                i.tipo = c[1];
+                i.
                 System.out.printf("%c", c);
             }
             br.close();
@@ -88,7 +94,7 @@ public class Imovel implements Serializable {
     private static void ListarImoveis() {
         ObjectInputStream input = null;
         try {
-            input = new ObjectInputStream(Files.newInputStream(Paths.get("imovel.csv")));
+            //input = new ObjectInputStream(Files.newInputStream(Paths.get("imovel.csv")));
             while (true) {
                 Imovel i = (Imovel) input.readObject();
                 System.out.printf("%d - %10.2f\n", i.referencia, i.valor);
