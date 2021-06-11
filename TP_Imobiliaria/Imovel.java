@@ -70,13 +70,16 @@ public class Imovel implements Serializable {
             FileReader fr = new FileReader(arquivo);
             BufferedReader br = new BufferedReader(fr);
             
+            String[] l = new String[];
+            String[] c = new String[5];
+            int i = 0;
             while (br.ready()) {
-                int[] c = br.read();
-                int i = 0; 
+                l[0] = br.readLine();
+                c[0] = l.split(",");
+                i++;
                 i.referencia = c[0];
                 i.tipo = c[1];
                 i.
-                System.out.printf("%c", c);
             }
             br.close();
             fr.close();
