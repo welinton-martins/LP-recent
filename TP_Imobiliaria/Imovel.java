@@ -61,18 +61,18 @@ public class Imovel implements Serializable {
     }
 
     private static void ImportarImoveis() {
-        final Imovel i = new Imovel();
-        final Scanner in = new Scanner(System.in);
+        Imovel i = new Imovel();
+        Scanner in = new Scanner(System.in);
 
         // System.out.print("Informe o nome do arquivo: ");
         // File arquivo = new File(in.next());
-        final File arquivo = new File("imovel.csv");
+        File arquivo = new File("imovel.csv");
         try {
             if (!arquivo.exists()) {
                 arquivo.createNewFile();
             }
-            final FileReader fr = new FileReader(arquivo);
-            final BufferedReader br = new BufferedReader(fr);
+            FileReader fr = new FileReader(arquivo);
+            BufferedReader br = new BufferedReader(fr);
 
             String l = "";
             while (br.ready()) {
