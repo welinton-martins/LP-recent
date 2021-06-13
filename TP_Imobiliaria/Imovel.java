@@ -21,99 +21,103 @@ public class Imovel implements Serializable {
 	private String bairro;
 	private float valor;
 	
-	public static void main(String[] args) {
-        Scanner in = new Scanner(System.in);
-		int op = 0;
-        do {
-            try {
-		System.out.println("Imobiliária");
-                System.out.println("<1> Importar imóveis");
-                System.out.println("<2> Exportar imóveis");
-                System.out.println("<3> Listar imóveis");
-                System.out.println("<4> Mostrar detalhe do imóvel");
-                System.out.println("<5> Inserir novo imóvel");
-                System.out.println("<6> Remover imóvel");
-                System.out.println("<0> Sair");
-                System.out.print("Opção: ");
-                op = in.nextInt();
-                switch (op) {
-                    case 1: ImportarImoveis();
-                        break;
-                    case 2: ExportarImoveis();
-                        break;
-                    case 3: ListarImoveis();
-                        break;
-                    case 4: MostrarDetalheDoImovel();
-                        break;
-                    case 5: InserirNovoImovel();
-                        break;
-                    case 6: RemoverImovel();
-                        break;
-                    case 0: break; 
-                    default: System.out.println("Opção inválida!");
-                }
-            } catch (NoSuchElementException e) {
-                e.printStackTrace();
-            }
-        } while (op != 0);
-        in.close();
-	}
-	private static void ImportarImoveis() {
-        Imovel i = new Imovel();
-        Scanner in = new Scanner(System.in);
-        System.out.print("Informe o nome do arquivo: ");
-        File arquivo = new File(in.next());
+	public static void main(final String[] args) {
+        // Scanner in = new Scanner(System.in);
+        // int op = 0;
+        // do {
+        // try {
+        // System.out.println("Imobiliária");
+        // System.out.println("<1> Importar imóveis");
+        // System.out.println("<2> Exportar imóveis");
+        // System.out.println("<3> Listar imóveis");
+        // System.out.println("<4> Mostrar detalhe do imóvel");
+        // System.out.println("<5> Inserir novo imóvel");
+        // System.out.println("<6> Remover imóvel");
+        // System.out.println("<0> Sair");
+        // System.out.print("Opção: ");
+        // op = in.nextInt();
+        // switch (op) {
+        // case 1: ImportarImoveis();
+        // break;
+        // case 2: ExportarImoveis();
+        // break;
+        // case 3: ListarImoveis();
+        // break;
+        // case 4: MostrarDetalheDoImovel();
+        // break;
+        // case 5: InserirNovoImovel();
+        // break;
+        // case 6: RemoverImovel();
+        // break;
+        // case 0: break;
+        // default: System.out.println("Opção inválida!");
+        // }
+        // } catch (NoSuchElementException e) {
+        // e.printStackTrace();
+        // }
+        // } while (op != 0);
+        // in.close();
+        ImportarImoveis();
+    }
+
+    private static void ImportarImoveis() {
+        final Imovel i = new Imovel();
+        final Scanner in = new Scanner(System.in);
+
+        // System.out.print("Informe o nome do arquivo: ");
+        // File arquivo = new File(in.next());
+        final File arquivo = new File("imovel.csv");
         try {
-            if(!arquivo.exists()) {
+            if (!arquivo.exists()) {
                 arquivo.createNewFile();
             }
-            FileReader fr = new FileReader(arquivo);
-            BufferedReader br = new BufferedReader(fr);
-            
-            String[] l = new String[];
-            String[] c = new String[5];
-            int i = 0;
+            final FileReader fr = new FileReader(arquivo);
+            final BufferedReader br = new BufferedReader(fr);
+
+            String l = "";
             while (br.ready()) {
-                l[0] = br.readLine();
-                c[0] = l.split(",");
-                i++;
-                i.referencia = c[0];
-                i.tipo = c[1];
-                i.
+                l = br.readLine();
+                System.out.println(l.split(""));
+                System.exit(1);
+                // i.referencia = c[0];
+                // i.tipo = c[1];
+                // i.quartos = c[2];
+                // i.bairro = c[3];
+                // i.valor = c[4];
             }
             br.close();
             fr.close();
-        } catch (FileNotFoundException e) {
+        } catch (final FileNotFoundException e) {
             System.out.println("Arquivo não encontrado!");
-        } catch (IOException e) {
+        } catch (final IOException e) {
             System.out.println("Erro de leitura/escrita");
         }
-	}
+    }
 
-	private static void ExportarImoveis() {
-	
-	}
+    private static void ExportarImoveis() {
+
+    }
 
     private static void ListarImoveis() {
-        ObjectInputStream input = null;
+        final ObjectInputStream input = null;
         try {
-            //input = new ObjectInputStream(Files.newInputStream(Paths.get("imovel.csv")));
+            // input = new ObjectInputStream(Files.newInputStream(Paths.get("imovel.csv")));
             while (true) {
-                Imovel i = (Imovel) input.readObject();
+                final Imovel i = (Imovel) input.readObject();
                 System.out.printf("%d - %10.2f\n", i.referencia, i.valor);
                 return;
             }
-        } catch (EOFException e) {
+        } catch (final EOFException e) {
             System.out.println("Fim dos registros");
-        } catch (ClassNotFoundException e) {
+        } catch (final ClassNotFoundException e) {
             System.out.println("Tipo de objeto inválido");
-        } catch (IOException e) {
+        } catch (final IOException e) {
             System.out.println("Erro de leitura no arquivo");
         } finally {
             if (input != null) {
                 try {
                     input.close();
-                } catch (IOException e) {
+                } catch (final IOException e) {
                     System.out.println("Erro ao fechar o arquivo!");
                 }
             }
