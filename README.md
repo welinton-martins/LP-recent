@@ -1,3 +1,3 @@
 # LP-recent-
 
-my tasks I do in the class ("usually I copy .smile.")
+my tasks I do in the class (".smile.")
